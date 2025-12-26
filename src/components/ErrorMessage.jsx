@@ -1,0 +1,7 @@
+/*Displays form error messages*/
+
+export default function ErrorMessage({ message }) {
+  if (!message) return null;
+
+  return <p className="error-text">{message}</p>;
+}

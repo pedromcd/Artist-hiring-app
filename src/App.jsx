@@ -1,7 +1,13 @@
-// Main application component
+import Contract from "./pages/Contract";
+
+/*
+ * Main application component
+ */
 function App() {
   return (
-    <h1>Artist Hiring App</h1>
+    <main>
+      <Contract />
+    </main>
   );
 }
 
