@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Contract from "./pages/Contract";
 import Success from "./pages/Success";
+import ContractsList from "./pages/ContractsList";
 
-/*
+/**
  * Main application component
  */
 function App() {
@@ -15,7 +16,14 @@ function App() {
       )}
 
       {screen === "success" && (
-        <Success onNewContract={() => setScreen("form")} />
+        <Success
+          onNewContract={() => setScreen("form")}
+          onViewContracts={() => setScreen("list")}
+        />
+      )}
+
+      {screen === "list" && (
+        <ContractsList onBack={() => setScreen("form")} />
       )}
     </main>
   );

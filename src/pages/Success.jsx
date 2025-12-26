@@ -1,7 +1,7 @@
-/*
+/**
  * Success page shown after contract submission
  */
-export default function Success({ onNewContract }) {
+export default function Success({ onNewContract, onViewContracts }) {
   return (
     <section>
       <h1>Contract successfully submitted 🎉</h1>
@@ -9,6 +9,10 @@ export default function Success({ onNewContract }) {
 
       <button onClick={onNewContract}>
         Create new contract
+      </button>
+
+      <button onClick={onViewContracts}>
+        View submitted contracts
       </button>
     </section>
   );
