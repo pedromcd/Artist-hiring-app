@@ -5,7 +5,7 @@ import Button from "./Button";
 /*
 * Artist contract form
 */
-export default function ContractForm({ artist }) {
+export default function ContractForm({ artist, onSuccess }) {
   const [clientName, setClientName] = useState("");
   const [fee, setFee] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -28,12 +28,31 @@ export default function ContractForm({ artist }) {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    alert("Contract submitted successfully!");
-  }
+  const contractData = {
+    id: Date.now(),
+    clientName,
+    artist,
+    fee,
+    eventDate,
+    address,
+  };
+
+  const savedContracts =
+    JSON.parse(localStorage.getItem("contracts")) || [];
+
+  savedContracts.push(contractData);
+
+  localStorage.setItem(
+    "contracts",
+    JSON.stringify(savedContracts)
+  );
+
+  onSuccess();
+}
 
   return (
     <form onSubmit={handleSubmit}>
