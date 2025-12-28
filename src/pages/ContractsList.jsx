@@ -1,28 +1,30 @@
+import { useEffect, useState } from "react";
+
 /*
- * Page to list submitted contracts
+ * Displays stored artist contracts
  */
 export default function ContractsList({ onBack }) {
-  const contracts =
-    JSON.parse(localStorage.getItem("contracts")) || [];
+  const [contracts, setContracts] = useState([]);
+
+  useEffect(() => {
+    const storedContracts =
+      JSON.parse(localStorage.getItem("contracts")) || [];
+    setContracts(storedContracts);
+  }, []);
 
   return (
     <section>
       <h1>Submitted Contracts</h1>
 
-      {contracts.length === 0 && (
-        <p>No contracts submitted yet.</p>
-      )}
+      {contracts.length === 0 && <p>No contracts found.</p>}
 
-      {contracts.length > 0 && (
-        <ul>
-          {contracts.map((contract) => (
-            <li key={contract.id}>
-              <strong>{contract.artist}</strong> —{" "}
-              {contract.clientName} ({contract.eventDate})
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {contracts.map((contract, index) => (
+          <li key={index}>
+            {contract.name} - {contract.artist} - {contract.date}
+          </li>
+        ))}
+      </ul>
 
       <button onClick={onBack}>Back</button>
     </section>

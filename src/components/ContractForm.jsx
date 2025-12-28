@@ -3,9 +3,10 @@ import Input from "./Input";
 import Button from "./Button";
 
 /*
-* Artist contract form
-*/
-export default function ContractForm({ artist, onSuccess }) {
+ * Artist contract form
+ * Handles form state and validation only
+ */
+export default function ContractForm({ selectedArtist, onSubmit }) {
   const [clientName, setClientName] = useState("");
   const [fee, setFee] = useState("");
   const [eventDate, setEventDate] = useState("");
@@ -28,31 +29,22 @@ export default function ContractForm({ artist, onSuccess }) {
   }
 
   function handleSubmit(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!validateForm()) return;
+    if (!validateForm()) return;
 
-  const contractData = {
-    id: Date.now(),
-    clientName,
-    artist,
-    fee,
-    eventDate,
-    address,
-  };
+    const contractData = {
+      id: Date.now(),
+      clientName,
+      artist: selectedArtist,
+      fee,
+      eventDate,
+      address,
+    };
 
-  const savedContracts =
-    JSON.parse(localStorage.getItem("contracts")) || [];
-
-  savedContracts.push(contractData);
-
-  localStorage.setItem(
-    "contracts",
-    JSON.stringify(savedContracts)
-  );
-
-  onSuccess();
-}
+    // Send data to parent component
+    onSubmit(contractData);
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -64,7 +56,12 @@ export default function ContractForm({ artist, onSuccess }) {
         error={errors.clientName}
       />
 
-      <Input label="Selected Artist" value={artist} readOnly required />
+      <Input
+        label="Selected Artist"
+        value={selectedArtist}
+        readOnly
+        required
+      />
 
       <Input
         label="Fee"

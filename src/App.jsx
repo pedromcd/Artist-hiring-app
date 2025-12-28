@@ -3,8 +3,9 @@ import Contract from "./pages/Contract";
 import Success from "./pages/Success";
 import ContractsList from "./pages/ContractsList";
 
-/**
+/*
  * Main application component
+ * Controls navigation flow between application screens
  */
 function App() {
   const [screen, setScreen] = useState("form");

@@ -5,3 +5,29 @@
   font-size: 0.9rem;
   margin-top: 4px;
 }
+
+/* Styles the success message screen */
+
+.success-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.success-container h2 {
+  color: #2a9d8f;
+  margin-bottom: 1rem;
+}
+
+.success-container button {
+  margin-top: 1.5rem;
+  padding: 10px 16px;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.success-container button:hover {
+  opacity: 0.9;
+}
