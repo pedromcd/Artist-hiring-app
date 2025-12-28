@@ -1,0 +1,7 @@
+/* Displays validation error messages below form fields */
+
+.error-text {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
