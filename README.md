@@ -81,9 +81,9 @@ Note: The project was initialized with Vite and React.
 If starting a new project from scratch, use:
 
 npm create vite@latest my-app
--
+
 cd my-app
--
+
 npm install
 
 3. Create a .env file in the project root and add your Spotify API credentials
