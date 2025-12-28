@@ -1,5 +1,6 @@
 # VERSÃO EM PORTUGUÊS
 
+
 # Aplicativo de Contratação de Artistas 🎤
 
 ## Tabela de Conteúdos
@@ -99,7 +100,7 @@ VITE_SPOTIFY_CLIENT_SECRET=seu_client_secret
 ```
 npm run dev
 ```
-##Uso
+## Uso
 
  Abra o app no navegador (Vite geralmente fornece uma URL local como http://localhost:5173).
 
@@ -118,6 +119,7 @@ npm run dev
 ________________________________________________________________________________________________________________
 
 # ENGLISH VERSION
+
 
 # Artist Hiring App 🎤
 
