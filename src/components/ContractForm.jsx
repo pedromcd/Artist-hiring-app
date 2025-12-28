@@ -4,22 +4,22 @@ import Button from "./Button";
 
 /*
  * Artist contract form
- * Saves contract data to localStorage
+ *
+ * Handles form state, validation, and saving contracts to localStorage
  */
 export default function ContractForm({ artist, onSuccess }) {
-  const [clientName, setClientName] = useState("");
-  const [fee, setFee] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [address, setAddress] = useState("");
-  const [errors, setErrors] = useState({});
+  const [clientName, setClientName] = useState(""); // Client name input
+  const [fee, setFee] = useState(""); // Fee input
+  const [eventDate, setEventDate] = useState(""); // Event date input
+  const [address, setAddress] = useState(""); // Address input
+  const [errors, setErrors] = useState({}); // Validation errors
 
+  // Validate required fields
   function validateForm() {
     const newErrors = {};
-
     if (!clientName.trim()) {
       newErrors.clientName = "Client name is required.";
     }
-
     if (!eventDate) {
       newErrors.eventDate = "Event date is required.";
     }
@@ -28,6 +28,7 @@ export default function ContractForm({ artist, onSuccess }) {
     return Object.keys(newErrors).length === 0;
   }
 
+  // Handle form submission
   function handleSubmit(e) {
     e.preventDefault();
     if (!validateForm()) return;
@@ -35,22 +36,17 @@ export default function ContractForm({ artist, onSuccess }) {
     const contractData = {
       id: Date.now(),
       clientName,
-      artist: artist.name,
+      artist: artist.name, // Ensure selected artist name is stored
       fee,
       eventDate,
       address,
     };
 
-    const savedContracts =
-      JSON.parse(localStorage.getItem("contracts")) || [];
-
+    const savedContracts = JSON.parse(localStorage.getItem("contracts")) || [];
     savedContracts.push(contractData);
-    localStorage.setItem(
-      "contracts",
-      JSON.stringify(savedContracts)
-    );
+    localStorage.setItem("contracts", JSON.stringify(savedContracts));
 
-    onSuccess();
+    onSuccess(); // Trigger success callback
   }
 
   return (
@@ -62,21 +58,18 @@ export default function ContractForm({ artist, onSuccess }) {
         onChange={(e) => setClientName(e.target.value)}
         error={errors.clientName}
       />
-
       <Input
         label="Selected Artist"
         value={artist?.name || ""}
         readOnly
         required
       />
-
       <Input
         label="Fee"
         type="number"
         value={fee}
         onChange={(e) => setFee(e.target.value)}
       />
-
       <Input
         label="Event Date"
         type="date"
@@ -85,15 +78,10 @@ export default function ContractForm({ artist, onSuccess }) {
         onChange={(e) => setEventDate(e.target.value)}
         error={errors.eventDate}
       />
-
       <div className="form-group">
         <label>Address</label>
-        <textarea
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+        <textarea value={address} onChange={(e) => setAddress(e.target.value)} />
       </div>
-
       <Button text="Submit Contract" />
     </form>
   );

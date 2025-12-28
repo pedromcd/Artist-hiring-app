@@ -1,8 +1,8 @@
-/* 
-*Reusable input component
-*Handles label, required field and error display
-*/
-
+/*
+ * Reusable input component
+ *
+ * Handles label, required field, read-only state, and error display
+ */
 export default function Input({
   label,
   type = "text",
@@ -17,7 +17,6 @@ export default function Input({
       <label>
         {label} {required && <span>*</span>}
       </label>
-
       <input
         type={type}
         value={value}
@@ -26,7 +25,6 @@ export default function Input({
         readOnly={readOnly}
         className={error ? "input-error" : ""}
       />
-
       {error && <p className="error-text">{error}</p>}
     </div>
   );
