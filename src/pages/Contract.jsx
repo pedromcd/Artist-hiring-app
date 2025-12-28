@@ -1,5 +1,4 @@
 import ContractForm from "../components/ContractForm";
-
 /*
  * Contract page
  * Receives selected artist and renders the contract form

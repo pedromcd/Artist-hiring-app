@@ -30,12 +30,14 @@ async function getAccessToken() {
   return accessToken;
 }
 
-// Search artists on Spotify
+/*
+ * Search artists by name
+ */
 export async function searchArtists(query) {
   const token = await getAccessToken();
 
   const response = await fetch(
-    `${SEARCH_URL}?q=${encodeURIComponent(query)}&type=artist&limit=12`,
+    `${SEARCH_URL}?q=${encodeURIComponent(query)}&type=artist&limit=10`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -47,3 +49,26 @@ export async function searchArtists(query) {
   return data.artists.items;
 }
 
+/*
+ * IMPORTANT:
+ * Spotify does not provide a public endpoint for "trending" or "popular" artists.
+ * To simulate this behavior, i performed a generic search using a popular keyword
+ * ("pop") and rely on Spotify's internal relevance and popularity ranking.
+ * This approach is used only to provide initial suggestions to the user.
+ */
+export async function getTrendingArtists() {
+  const token = await getAccessToken();
+
+  const response = await fetch(
+    `${SEARCH_URL}?q=pop&type=artist&limit=12`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  const data = await response.json();
+  return data.artists.items;
+}
+ 

@@ -1,18 +1,30 @@
-import { useState } from "react";
-import { searchArtists } from "../services/spotify";
+import { useEffect, useState } from "react";
+import { searchArtists, getTrendingArtists } from "../services/spotify";
 
 /*
  * Artist search page
- * Allows the user to search and select an artist
+ * Displays trending artists when no search is performed
  */
 export default function SearchArtists({ onSelectArtist }) {
   const [query, setQuery] = useState("");
   const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // Load trending artists on initial render
+  useEffect(() => {
+    async function loadTrending() {
+      setLoading(true);
+      const results = await getTrendingArtists();
+      setArtists(results);
+      setLoading(false);
+    }
+
+    loadTrending();
+  }, []);
+
   async function handleSearch(e) {
     e.preventDefault();
-    if (!query) return;
+    if (!query.trim()) return;
 
     setLoading(true);
     const results = await searchArtists(query);
