@@ -1,4 +1,4 @@
-#VERSÃO EM PORTUGUÊS
+# VERSÃO EM PORTUGUÊS
 
 # Aplicativo de Contratação de Artistas 🎤
 
@@ -71,47 +71,47 @@ src/
 
 ## Instalação
 
-# 1. Clonar o repositório
+## 1. Clonar o repositório
 git clone https://github.com/pedromcd/Artist-hiring-app.git
 cd artist-hiring-app
 
-# 2. Instalar dependências
+## 2. Instalar dependências
 npm install
 
-# Observação: O projeto foi iniciado com Vite e React.
-# Caso comece um projeto do zero, use:
+## Observação: O projeto foi iniciado com Vite e React.
+## Caso comece um projeto do zero, use:
 npm create vite@latest my-app
 cd my-app
 npm install
 
-# 3. Criar arquivo .env na raiz do projeto e adicionar suas credenciais da Spotify API
-# Exemplo de conteúdo do .env
+## 3. Criar arquivo .env na raiz do projeto e adicionar suas credenciais da Spotify API
+## Exemplo de conteúdo do .env
 VITE_SPOTIFY_CLIENT_ID=seu_client_id
 VITE_SPOTIFY_CLIENT_SECRET=seu_client_secret
 
-# 4. Executar o app em modo de desenvolvimento
+## 4. Executar o app em modo de desenvolvimento
 npm run dev
 
 ##Uso
 
-# Abra o app no navegador (Vite geralmente fornece uma URL local como http://localhost:5173
+## Abra o app no navegador (Vite geralmente fornece uma URL local como http://localhost:5173
 ).
 
-# Pesquise um artista ou selecione um dos artistas em destaque.
+## Pesquise um artista ou selecione um dos artistas em destaque.
 
-# Preencha o formulário de contrato com os dados do cliente.
+## Preencha o formulário de contrato com os dados do cliente.
 
-# Envie o contrato.
+## Envie o contrato.
 
-# Visualize, os contratos na tela de lista de contratos, existe também a opção de excluir os contratos existentes.
+## Visualize, os contratos na tela de lista de contratos, existe também a opção de excluir os contratos existentes.
 
-##Licença
+## Licença
 
 # Este projeto é open-source e está disponível sob a Licença MIT
 
 ________________________________________________________________________________________________________________
 
-#ENGLISH VERSION
+# ENGLISH VERSION
 
 # Artist Hiring App 🎤
 
@@ -183,12 +183,12 @@ src/
 ---
 
 ## Installation
-# 1. Clone the repository
+## 1. Clone the repository
 
 git clone (https://github.com/pedromcd/Artist-hiring-app.git)
 cd artist-hiring-app
 
-# 2. Install dependencies
+## 2. Install dependencies
 
 npm install
 
@@ -201,12 +201,12 @@ cd my-app
 
 npm install
 
-# 3. Create a .env file in the project root and add your Spotify API credentials
-# Example .env content:
+## 3. Create a .env file in the project root and add your Spotify API credentials
+## Example .env content:
 VITE_SPOTIFY_CLIENT_ID=your_client_id
 VITE_SPOTIFY_CLIENT_SECRET=your_client_secret
 
-# 4. Run the app in development mode
+## 4. Run the app in development mode
 
 npm run dev
 
