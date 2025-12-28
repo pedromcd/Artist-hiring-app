@@ -2,31 +2,13 @@ import ContractForm from "../components/ContractForm";
 
 /*
  * Contract page
- * Handles contract submission and persistence
+ * Receives selected artist and renders the contract form
  */
-export default function Contract({ onSuccess }) {
-  const selectedArtist = "Artist Name";
-
-  // Save contract data to localStorage
-  const saveContract = (contractData) => {
-    const storedContracts =
-      JSON.parse(localStorage.getItem("contracts")) || [];
-
-    storedContracts.push(contractData);
-    localStorage.setItem("contracts", JSON.stringify(storedContracts));
-  };
-
+export default function Contract({ artist, onSuccess }) {
   return (
     <section>
       <h1>Artist Contract</h1>
-
-      <ContractForm
-        selectedArtist={selectedArtist}
-        onSubmit={(data) => {
-          saveContract(data);
-          onSuccess();
-        }}
-      />
+      <ContractForm artist={artist} onSuccess={onSuccess} />
     </section>
   );
 }

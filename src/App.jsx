@@ -9,7 +9,7 @@ import ContractsList from "./pages/ContractsList";
  */
 function App() {
   const [screen, setScreen] = useState("search");
-  const [selectedArtist, setSelectedArtist] = useState("");
+  const [selectedArtist, setSelectedArtist] = useState(null);
 
   return (
     <main>

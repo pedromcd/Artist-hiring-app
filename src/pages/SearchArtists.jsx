@@ -3,6 +3,7 @@ import { searchArtists } from "../services/spotify";
 
 /*
  * Artist search page
+ * Allows the user to search and select an artist
  */
 export default function SearchArtists({ onSelectArtist }) {
   const [query, setQuery] = useState("");
@@ -38,7 +39,7 @@ export default function SearchArtists({ onSelectArtist }) {
       <ul>
         {artists.map((artist) => (
           <li key={artist.id}>
-            <button onClick={() => onSelectArtist(artist.name)}>
+            <button onClick={() => onSelectArtist(artist)}>
               {artist.name}
             </button>
           </li>
