@@ -73,36 +73,35 @@ src/
 
 1. Clone o repositório:
 
-```bash
+```
 git clone https://github.com/pedromcd/Artist-hiring-app.git
 cd artist-hiring-app
-
+```
 
 2. Instalar dependências
-
+```
 npm install
-
+```
 Observação: O projeto foi iniciado com Vite e React.
 Caso comece um projeto do zero, use:
-
+```
 npm create vite@latest my-app
 cd my-app
 npm install
-
+```
 3. Criar arquivo .env na raiz do projeto e adicionar suas credenciais da Spotify API
 Exemplo de conteúdo do .env
-
+```
 VITE_SPOTIFY_CLIENT_ID=seu_client_id
 VITE_SPOTIFY_CLIENT_SECRET=seu_client_secret
-
-## 4. Executar o app em modo de desenvolvimento
-
+```
+4. Executar o app em modo de desenvolvimento
+```
 npm run dev
-
+```
 ##Uso
 
- Abra o app no navegador (Vite geralmente fornece uma URL local como http://localhost:5173
-).
+ Abra o app no navegador (Vite geralmente fornece uma URL local como http://localhost:5173).
 
  Pesquise um artista ou selecione um dos artistas em destaque.
 
@@ -190,33 +189,32 @@ src/
 ---
 
 ## Installation
-## 1. Clone the repository
-
+1. Clone the repository
+```
 git clone (https://github.com/pedromcd/Artist-hiring-app.git)
 cd artist-hiring-app
-
-## 2. Install dependencies
-
+```
+2. Install dependencies
+```
 npm install
-
-#Note: The project was initialized with Vite and React.
-#If starting a new project from scratch, use:
-
+```
+Note: The project was initialized with Vite and React.
+If starting a new project from scratch, use:
+```
 npm create vite@latest my-app
-
 cd my-app
-
 npm install
-
-## 3. Create a .env file in the project root and add your Spotify API credentials
-## Example .env content:
+```
+3. Create a .env file in the project root and add your Spotify API credentials
+Example .env content:
+```
 VITE_SPOTIFY_CLIENT_ID=your_client_id
 VITE_SPOTIFY_CLIENT_SECRET=your_client_secret
-
-## 4. Run the app in development mode
-
+```
+4. Run the app in development mode
+```
 npm run dev
-
+```
 ---
 
 ## Usage
