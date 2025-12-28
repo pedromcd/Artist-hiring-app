@@ -11,7 +11,7 @@ export default function Contract({ onSuccess }) {
 
   return (
     <section>
-      <h1>Artist Contract</h1>
+      <h1>Contrato de artista</h1>
 
       {/* If no artist selected, show search */}
       {!selectedArtist && (
@@ -26,7 +26,7 @@ export default function Contract({ onSuccess }) {
             className="btn-secondary"
             style={{ marginBottom: "1rem" }}
           >
-            Select Another Artist
+            Escolher outro artista
           </button>
 
           <ContractForm artist={selectedArtist} onSuccess={onSuccess} />

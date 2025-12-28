@@ -18,10 +18,10 @@ export default function ContractForm({ artist, onSuccess }) {
   function validateForm() {
     const newErrors = {};
     if (!clientName.trim()) {
-      newErrors.clientName = "Client name is required.";
+      newErrors.clientName = "Nome do cliente necessário.";
     }
     if (!eventDate) {
-      newErrors.eventDate = "Event date is required.";
+      newErrors.eventDate = "Data do evento necessária.";
     }
 
     setErrors(newErrors);
@@ -52,26 +52,26 @@ export default function ContractForm({ artist, onSuccess }) {
   return (
     <form onSubmit={handleSubmit}>
       <Input
-        label="Client Name"
+        label="Cliente"
         required
         value={clientName}
         onChange={(e) => setClientName(e.target.value)}
         error={errors.clientName}
       />
       <Input
-        label="Selected Artist"
+        label="Artista"
         value={artist?.name || ""}
         readOnly
         required
       />
       <Input
-        label="Fee"
+        label="Cachê"
         type="number"
         value={fee}
         onChange={(e) => setFee(e.target.value)}
       />
       <Input
-        label="Event Date"
+        label="Data do Evento"
         type="date"
         required
         value={eventDate}
@@ -79,10 +79,10 @@ export default function ContractForm({ artist, onSuccess }) {
         error={errors.eventDate}
       />
       <div className="form-group">
-        <label>Address</label>
+        <label>Endereço</label>
         <textarea value={address} onChange={(e) => setAddress(e.target.value)} />
       </div>
-      <Button text="Submit Contract" />
+      <Button text="Finalizar contrato" />
     </form>
   );
 }

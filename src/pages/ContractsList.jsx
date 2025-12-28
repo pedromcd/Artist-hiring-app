@@ -23,19 +23,19 @@ export default function ContractsList({ onBack }) {
 
   return (
     <section>
-      <h1>Submitted Contracts</h1>
+      <h1>Contratos Realizados</h1>
 
-      {contracts.length === 0 && <p>No contracts found.</p>}
+      {contracts.length === 0 && <p>Nenhum contrato existente.</p>}
 
       <table>
         <thead>
           <tr>
-            <th>Client</th>
-            <th>Artist</th>
-            <th>Event Date</th>
-            <th>Fee</th>
-            <th>Address</th>
-            <th>Actions</th>
+            <th>Cliente</th>
+            <th>Artista</th>
+            <th>Data do evento</th>
+            <th>Cachê</th>
+            <th>Endereço</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +48,7 @@ export default function ContractsList({ onBack }) {
               <td>{contract.address}</td>
               <td>
                 <button onClick={() => handleDelete(contract.id)}>
-                  Delete
+                  Remover
                 </button>
               </td>
             </tr>
@@ -56,7 +56,7 @@ export default function ContractsList({ onBack }) {
         </tbody>
       </table>
 
-      <button onClick={onBack}>Back</button>
+      <button onClick={onBack}>Voltar</button>
     </section>
   );
 }

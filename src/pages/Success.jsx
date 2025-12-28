@@ -6,11 +6,11 @@
 export default function Success({ onNewContract, onViewContracts }) {
   return (
     <section>
-      <h1>Success!</h1>
-      <p>Your artist contract was successfully submitted.</p>
+      <h1>Sucesso!</h1>
+      <h2>Contrato realizado e salvo 🎉</h2>
 
-      <button onClick={onNewContract}>Create new contract</button>
-      <button onClick={onViewContracts}>View contracts</button>
+      <button onClick={onNewContract}>Realizar novo contrato</button>
+      <button onClick={onViewContracts}>Visualizar contratos existentes</button>
     </section>
   );
 }

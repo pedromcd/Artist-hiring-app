@@ -22,7 +22,7 @@ export default function SearchArtists({ onSelectArtist }) {
         setArtists(results);
       } catch (err) {
         console.error(err);
-        setError("Failed to load trending artists."); // Show error if request fails
+        setError("Falha ao carregar artistas do momento."); // Show error if request fails
       }
       setLoading(false);
     }
@@ -39,32 +39,32 @@ export default function SearchArtists({ onSelectArtist }) {
     setError("");
     try {
       const results = await searchArtists(query); // Fetch artists from Spotify API
-      if (results.length === 0) setError("No artists found. Try another search.");
+      if (results.length === 0) setError("Nenhum artista encontrado.");
       setArtists(results);
     } catch (err) {
       console.error(err);
-      setError("Failed to search artists."); // Show error if request fails
+      setError("Falha ao procurar artistas."); // Show error if request fails
     }
     setLoading(false);
   }
 
   return (
     <section>
-      <h1>Search Artist</h1>
+      <h2>Procurar Artista</h2>
 
       {/* Search form */}
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="Search artist name"
+          placeholder="Procurar nome de artista"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button type="submit">Procurar</button>
       </form>
 
       {/* Loading and error feedback */}
-      {loading && <p>Loading artists...</p>}
+      {loading && <p>Carregando artistas...</p>}
       {error && <p className="error-text">{error}</p>}
 
       {/* Artist results with fade-in animation */}

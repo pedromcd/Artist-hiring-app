@@ -6,9 +6,9 @@
 export default function SuccessMessage({ onRestart }) {
   return (
     <div className="success-container">
-      <h2>Contract successfully submitted 🎉</h2>
-      <p>Your artist hiring request has been saved.</p>
-      <button onClick={onRestart}>Create a new contract</button>
+      <h2>Contrato realizado com sucesso 🎉</h2>
+      <p>Seu contrato foi salvo.</p>
+      <button onClick={onRestart}>Realizar novo contrato</button>
     </div>
   );
 }
