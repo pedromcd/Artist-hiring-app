@@ -36,3 +36,16 @@ li button:hover {
   text-align: center;
   font-style: italic;
 }
+
+.artist-list li {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.4s forwards;
+  margin-bottom: 0.5rem;
+}
+
+/* Delay incremental para cada item */
+.artist-list li:nth-child(1) { animation-delay: 0.1s; }
+.artist-list li:nth-child(2) { animation-delay: 0.2s; }
+.artist-list li:nth-child(3) { animation-delay: 0.3s; }
+/* Continue para os demais... */

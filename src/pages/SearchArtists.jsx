@@ -67,10 +67,10 @@ export default function SearchArtists({ onSelectArtist }) {
       {loading && <p>Loading artists...</p>}
       {error && <p className="error-text">{error}</p>}
 
-      {/* Artist results */}
-      <ul>
-        {artists.map((artist) => (
-          <li key={artist.id}>
+      {/* Artist results with fade-in animation */}
+      <ul className="artist-list">
+        {artists.map((artist, index) => (
+          <li key={artist.id} style={{ animationDelay: `${index * 0.1}s` }}>
             <button onClick={() => onSelectArtist(artist)}>
               {artist.name}
             </button>
