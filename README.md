@@ -7,7 +7,6 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Future Improvements](#future-improvements)
 - [License](#license)
 
 ---
