@@ -1,0 +1,71 @@
+/* App.css - global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #222;
+}
+
+/* Styles for the ContractsList table */
+.contracts-table {
+  width: 100%; /* Make the table take full width */
+  border-collapse: collapse; /* Remove double borders */
+  margin-top: 1rem; /* Space from top elements */
+  font-family: Arial, sans-serif;
+}
+
+/* Table header styles */
+.contracts-table th {
+  background-color: #4CAF50; /* Header background color */
+  color: white; /* Header text color */
+  padding: 0.75rem; /* Header padding */
+  text-align: left; /* Align text to the left */
+  border-bottom: 2px solid #ddd; /* Bottom border for separation */
+}
+
+/* Table row styles */
+.contracts-table td {
+  padding: 0.75rem; /* Cell padding */
+  border-bottom: 1px solid #ddd; /* Bottom border for rows */
+}
+
+/* Alternate row colors for better readability */
+.contracts-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect on table rows */
+.contracts-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Style for the Back button */
+button {
+  margin-top: 1rem; /* Space above the button */
+  padding: 0.5rem 1rem; /* Button padding */
+  background-color: #4CAF50; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer on hover */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #45a049; /* Slightly darker on hover */
+}
