@@ -1,6 +1,7 @@
 /*
  * Success page
  * Displays confirmation after contract submission
+ * Provides options to create a new contract or view existing contracts
  */
 export default function Success({ onNewContract, onViewContracts }) {
   return (

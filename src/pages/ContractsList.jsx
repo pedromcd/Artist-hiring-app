@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 /*
  * Displays stored artist contracts
+ * Loads data from localStorage and lists them
  */
 export default function ContractsList({ onBack }) {
   const [contracts, setContracts] = useState([]);
 
+  // Load contracts from localStorage on initial render
   useEffect(() => {
     const storedContracts =
       JSON.parse(localStorage.getItem("contracts")) || [];
@@ -21,7 +23,7 @@ export default function ContractsList({ onBack }) {
       <ul>
         {contracts.map((contract, index) => (
           <li key={index}>
-            {contract.name} - {contract.artist} - {contract.date}
+            {contract.clientName} - {contract.artist.name || contract.artist} - {contract.eventDate}
           </li>
         ))}
       </ul>

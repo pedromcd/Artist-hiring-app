@@ -1,7 +1,9 @@
 import ContractForm from "../components/ContractForm";
+
 /*
  * Contract page
- * Receives selected artist and renders the contract form
+ * Receives the selected artist and renders the contract form
+ * Handles submission via onSuccess callback
  */
 export default function Contract({ artist, onSuccess }) {
   return (
