@@ -1,232 +1,129 @@
-# VERSÃO EM PORTUGUÊS
+**English** | [Português](README.pt-BR.md)
 
+# 🎤 Artist Hiring App
 
-# Aplicativo de Contratação de Artistas 🎤
+**A React single-page app for booking music artists: search artists through the Spotify Web API, pick one, fill in a validated contract form, and manage the submitted contracts.**
 
-## Tabela de Conteúdos
-- [Visão Geral](#visão-geral)
-- [Tecnologias](#tecnologias)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Licença](#licença)
+A front-end project built with React 19 and Vite, focused on component design, form validation, external API integration, and a clear multi-step user flow.
 
 ---
 
-## Visão Geral
-O **Aplicativo de Contratação de Artistas** permite que os usuários pesquisem artistas musicais, selecionem um e enviem uma solicitação de contrato com detalhes como nome do cliente, data do evento, valor do cachê e endereço. Os usuários também podem visualizar e gerenciar os contratos enviados.
+## 🎯 Goal
 
-O app busca dados de artistas da **Spotify API** e oferece uma experiência fluida com animações, tratamento de erros e componentes interativos.
+Event organizers who want to hire an artist usually juggle several channels to find the artist, collect booking details, and keep track of requests. This app puts that flow into four screens:
+
+```text
+Search artist  →  Contract form  →  Confirmation  →  Contract list
+```
+
+From a technical point of view, the goal was to practice:
+
+- integrating a **real third-party API** with OAuth-style authentication;
+- building **reusable components** (inputs, buttons, messages);
+- **form state and validation** in React;
+- managing navigation and shared state **without extra libraries**.
 
 ---
 
-## Tecnologias
-- **Frontend:** React (Vite)  
-- **CSS:** Vanilla CSS (modularizado em `app.css`, `form.css`, `search.css`)  
-- **Armazenamento de dados:** LocalStorage (atualmente, pode ser substituído por um banco de dados)  
-- **Integração com API:** Spotify Web API (Client Credentials Flow)  
-- **Controle de Versão:** Git + GitHub  
+## ✨ Features
+
+- **Artist search** by name through the Spotify Web API (up to 12 results, shown as a staggered animated list).
+- **Suggested artists on first load**, so the screen is never empty.
+- **Contract form** with client name, event date, fee, and address; the selected artist's name is filled in automatically.
+- **Validation** of required fields with inline error messages.
+- **Change the artist** in the middle of the form if the wrong one was picked.
+- **Confirmation screen** with options to start a new contract or view all contracts.
+- **Contract list** in a table, with **delete**.
+- **Persistence** in the browser's `localStorage`.
+- **Loading and error states** for API calls and empty results.
+- **Screen transitions** with a fade-in animation.
+
+The interface text is in Portuguese.
 
 ---
 
-## Estrutura do Projeto
-src/  
-├── components/  
-│   ├── ContractForm.jsx  
-│   ├── Input.jsx  
-│   ├── Button.jsx  
-│   └── ErrorMessage.jsx  
-│  
-├── pages/  
-│   ├── SearchArtists.jsx  
-│   ├── Contract.jsx  
-│   ├── Success.jsx  
-│   └── ContractsList.jsx  
-│  
-├── services/  
-│   └── spotify.js  
-│  
-├── styles/  
-│   ├── app.css  
-│   ├── form.css  
-│   └── search.css  
-│  
-├── App.jsx  
-└── main.jsx  
+## 🧠 How it works
+
+### Spotify integration (`src/services/spotify.js`)
+
+- Authenticates with the **Client Credentials flow**: the client ID and secret are exchanged for an access token at `accounts.spotify.com/api/token`.
+- The token is **cached in memory**, so it is requested only once per session.
+- Searches call `GET /v1/search?type=artist&limit=12`.
+- Spotify has no "trending artists" endpoint, so the initial suggestions come from a generic search with a popular keyword. This is documented in the code as a UX decision.
+
+### Navigation and state (`src/App.jsx`)
+
+- A single `screen` state (`search`, `form`, `success`, `list`) controls which page is rendered, a deliberate choice to keep the app small and dependency-free instead of adding a router.
+- The selected artist is lifted to `App` and passed down to the contract page.
+
+### Components
+
+| Component | Responsibility |
+|---|---|
+| `ContractForm` | Form state, validation, and saving to `localStorage` |
+| `Input` | Reusable field with label, required flag, read-only mode, and error display |
+| `Button` | Primary button |
+| `ErrorMessage` / `SuccessMessage` | Feedback messages |
 
 ---
 
-## Funcionalidades
-- Pesquisar artistas usando a Spotify API  
-- Exibir artistas em destaque quando nenhuma pesquisa é realizada  
-- Selecionar um artista e preencher o formulário de contrato  
-- Validar campos obrigatórios com mensagens de erro  
-- Enviar contrato e armazenar no LocalStorage  
-- Visualizar contratos enviados em uma tabela estruturada  
-- Excluir contratos enviados  
-- Possibilidade de selecionar outro artista caso tenha sido escolhido errado  
-- Animações e transições para melhor experiência do usuário (UX)
+## 🛠️ Tech stack
+
+- **React 19** + **Vite 7**
+- **Spotify Web API** (Client Credentials flow)
+- **Plain CSS**, split into `app.css`, `form.css`, and `search.css`
+- **localStorage** for persistence
+- **ESLint** (React Hooks and React Refresh plugins)
 
 ---
 
-## Instalação
+## ▶️ Running it
 
-1. Clone o repositório:
+1. Create an app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) to get a client ID and secret.
+2. Clone and install:
+   ```bash
+   git clone https://github.com/pedromcd/Artist-hiring-app.git
+   cd Artist-hiring-app
+   npm install
+   ```
+3. Create a `.env` file in the project root:
+   ```env
+   VITE_SPOTIFY_CLIENT_ID=your_client_id
+   VITE_SPOTIFY_CLIENT_SECRET=your_client_secret
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   Open the URL shown by Vite (usually `http://localhost:5173`).
 
-```
-git clone https://github.com/pedromcd/Artist-hiring-app.git
-cd artist-hiring-app
-```
-
-2. Instalar dependências
-```
-npm install
-```
-Observação: O projeto foi iniciado com Vite e React.
-Caso comece um projeto do zero, use:
-```
-npm create vite@latest my-app
-cd my-app
-npm install
-```
-3. Criar arquivo .env na raiz do projeto e adicionar suas credenciais da Spotify API
-Exemplo de conteúdo do .env
-```
-VITE_SPOTIFY_CLIENT_ID=seu_client_id
-VITE_SPOTIFY_CLIENT_SECRET=seu_client_secret
-```
-4. Executar o app em modo de desenvolvimento
-```
-npm run dev
-```
-## Uso
-
- Abra o app no navegador (Vite geralmente fornece uma URL local como http://localhost:5173).
-
- Pesquise um artista ou selecione um dos artistas em destaque.
-
- Preencha o formulário de contrato com os dados do cliente.
-
- Envie o contrato.
-
- Visualize, os contratos na tela de lista de contratos, existe também a opção de excluir os contratos existentes.
-
-## Licença
-
- Este projeto é open-source e está disponível sob a Licença MIT
-
-________________________________________________________________________________________________________________
-
-# ENGLISH VERSION
-
-
-# Artist Hiring App 🎤
-
-## Table of Contents
-- [Overview](#overview)
-- [Technologies](#technologies)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
+Other scripts: `npm run build`, `npm run preview`, `npm run lint`.
 
 ---
 
-## Overview
-The **Artist Hiring App** allows users to search for music artists, select one, and submit a contract request with details such as client name, event date, fee, and address. Users can view submitted contracts and manage them.
+## 🧩 Structure
 
-The app fetches artist data from the **Spotify API** and provides a smooth user experience with animations, error handling, and interactive components.
+```text
+src/
+├── App.jsx               # Screen state and selected artist
+├── main.jsx              # Entry point
+├── components/           # ContractForm, Input, Button, ErrorMessage, SuccessMessage
+├── pages/                # SearchArtists, Contract, Success, ContractsList
+├── services/spotify.js   # Spotify authentication and search
+└── styles/               # app.css, form.css, search.css
+```
 
 ---
 
-## Technologies
-- **Frontend:** React (Vite)  
-- **CSS:** Vanilla CSS (modularized into `app.css`, `form.css`, `search.css`)  
-- **Data storage:** LocalStorage (currently, can be replaced with a database)  
-- **API integration:** Spotify Web API (Client Credentials Flow)  
-- **Version Control:** Git + GitHub  
+## ⚠️ Limitations and next steps
+
+- **The Spotify secret reaches the browser.** Variables prefixed with `VITE_` are embedded in the client bundle, so this setup is suitable for local development only. The next step is a small backend (or serverless function) that requests the token and keeps the secret on the server.
+- **Local persistence only:** contracts live in the browser's `localStorage`. A real version would store them in a database behind an API, with user accounts.
+- **More validation:** fee format, event dates in the past, and address fields.
+- **Tests** for the form validation and the Spotify service.
 
 ---
 
-## Project Structure
-src/  
-├── components/  
-│   ├── ContractForm.jsx  
-│   ├── Input.jsx  
-│   ├── Button.jsx  
-│   └── ErrorMessage.jsx  
-│  
-├── pages/  
-│   ├── SearchArtists.jsx  
-│   ├── Contract.jsx  
-│   ├── Success.jsx  
-│   └── ContractsList.jsx  
-│  
-├── services/  
-│   └── spotify.js  
-│  
-├── styles/  
-│   ├── app.css  
-│   ├── form.css  
-│   └── search.css  
-│  
-├── App.jsx  
-└── main.jsx  
+## 👨‍💻 Author
 
----
-
-## Features
-- Search for artists using Spotify API  
-- Display trending artists when no search is performed  
-- Select an artist and fill in a contract form  
-- Validate required fields with error messages  
-- Submit contract and store it in LocalStorage  
-- View submitted contracts in a structured table  
-- Delete submitted contracts  
-- Ability to select a different artist if a mistake is made  
-- Animations and transitions for better UX
-
----
-
-## Installation
-1. Clone the repository
-```
-git clone (https://github.com/pedromcd/Artist-hiring-app.git)
-cd artist-hiring-app
-```
-2. Install dependencies
-```
-npm install
-```
-Note: The project was initialized with Vite and React.
-If starting a new project from scratch, use:
-```
-npm create vite@latest my-app
-cd my-app
-npm install
-```
-3. Create a .env file in the project root and add your Spotify API credentials
-Example .env content:
-```
-VITE_SPOTIFY_CLIENT_ID=your_client_id
-VITE_SPOTIFY_CLIENT_SECRET=your_client_secret
-```
-4. Run the app in development mode
-```
-npm run dev
-```
----
-
-## Usage
-1. Open the app in the browser (Vite usually provides a local URL like http://localhost:5173).  
-2. Search for an artist or select from trending artists.  
-3. Fill out the contract form with client details.  
-4. Submit the contract.  
-5. View the contracts from the contract list screen, you can also delete a existing contract
-
----
-
-## License
-This project is open-source and available under the [MIT License](LICENSE).
+**Pedro Marques Correa Domingues** · [GitHub](https://github.com/pedromcd) · [Portfolio](https://pedromcd.github.io)
